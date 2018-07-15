@@ -4,18 +4,18 @@ public class IntegerToRoman{
          StringBuilder stringBuilder = new StringBuilder (); 
          count = howManyDigit(number); 
          switch (count) {
-             case 4:
+             case 4: //since the input is restricted to 1 to 3999, we only need to take care of at largest "3" in the code
                  for(int i=0; i<number/1000; i++) {
                      stringBuilder.append("M"); 
                  }
-                 number = number % 1000;
+                 number = number % 1000; //here we don't use "break", b/c we're letting the next case to take care of the remaining digits
              case 3:
                  if(number/100==4) stringBuilder.append("CD");
                  else if (number/100==9) stringBuilder.append("CM"); 
                  else if (number/100==5) stringBuilder.append("D"); 
-                 else if (number/100>5) {
+                 else if (number/100>5) { //when the number is bigger than 5, we need to think of it's a "5" (or 10, 100 times of 5) symbol appended with other symbols 
                      stringBuilder.append("D");
-                     for (int i=0; i<(number/100-5); i++) {
+                     for (int i=0; i<(number/100-5); i++) { 
                          stringBuilder.append("C");
                      }
                  }
